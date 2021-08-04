@@ -1,10 +1,14 @@
-import { persistStore } from 'redux-persist';
-import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
+import { persistStore } from "redux-persist";
+import { createStore, applyMiddleware } from "redux";
+import logger from "redux-logger";
 
-import rootReducer from './rootReducer';
+import rootReducer from "./rootReducer";
 
-const middlewares = [logger];
+const middlewares = [];
+
+if (process.env.NODE_ENV === "production") {
+  middlewares.push(logger);
+}
 
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
