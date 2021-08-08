@@ -1,18 +1,18 @@
-import { Redirect, Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from "react-router";
 
-import './App.css';
-import HomePage from './pages/homepage/homepage';
-import './App.css';
-import ShopPage from './pages/shop/shop';
-import Header from './components/header/header';
-import SignInAndSignUpPage from './components/sign-in-and-sign-up/sign-in-and-sign-up';
-import React from 'react';
-import { auth, createUserProfileDocument } from './firebase/firebase.util';
-import { connect } from 'react-redux';
-import { setCurrentUser } from './redux/user/userAction';
-import { createStructuredSelector } from 'reselect';
-import { selectCurrentUser } from './redux/user/user.selector';
-import CheckoutPage from './components/checkout/checkout';
+import "./App.css";
+import HomePage from "./pages/homepage/homepage";
+import "./App.css";
+import ShopPage from "./pages/shop/shop";
+import Header from "./components/header/header";
+import SignInAndSignUpPage from "./components/sign-in-and-sign-up/sign-in-and-sign-up";
+import React from "react";
+import { auth, createUserProfileDocument } from "./firebase/firebase.util";
+import { connect } from "react-redux";
+import { setCurrentUser } from "./redux/user/userAction";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/user/user.selector";
+import CheckoutPage from "./components/checkout/checkout";
 
 class App extends React.Component {
   unscribeFromAuth = null;
@@ -42,18 +42,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         <Header />
         <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/shop' component={ShopPage} />
-          <Route exact path='/checkout' component={CheckoutPage} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
-            path='/signin'
+            path="/signin"
             render={() =>
               this.props.currentUser ? (
-                <Redirect to='/' />
+                <Redirect to="/" />
               ) : (
                 <SignInAndSignUpPage />
               )
